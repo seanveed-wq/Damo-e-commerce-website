@@ -1,0 +1,38 @@
+:root {
+    --black: #111;
+    --white: #fff;
+    --gray: #f5f5f5;
+}
+
+body { font-family: 'Inter', sans-serif; margin: 0; background: var(--white); color: var(--black); }
+
+/* Nav */
+.main-nav { display: flex; justify-content: space-between; padding: 20px 5%; border-bottom: 1px solid #eee; position: sticky; top: 0; background: white; z-index: 100; }
+.logo { font-weight: 900; font-size: 1.5rem; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { text-decoration: none; color: black; font-weight: 600; }
+.login-btn { border: 1px solid #ccc; padding: 5px 15px; border-radius: 20px; }
+
+/* Hero */
+.hero { height: 70vh; background: var(--gray); display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-size: 4rem; font-weight: 900; margin-bottom: 10px; }
+.shop-btn { background: black; color: white; padding: 12px 25px; text-decoration: none; border-radius: 30px; font-weight: 700; }
+
+/* Product Grid */
+.shop-grid { padding: 50px 5%; }
+.products-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+.p-card { background: var(--gray); padding: 10px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.p-card:hover { opacity: 0.8; }
+.p-card img { width: 100%; border-radius: 5px; }
+
+/* Login Box */
+.auth-page { display: flex; align-items: center; justify-content: center; height: 100vh; background: #fff; }
+.login-box { width: 350px; text-align: center; }
+.auth-input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+.auth-btn { width: 100%; padding: 12px; background: black; color: white; border: none; font-weight: 900; cursor: pointer; border-radius: 5px; }
+
+/* Checkout */
+.checkout-section { padding: 50px 5%; background: var(--gray); }
+.checkout-card { background: white; padding: 30px; border-radius: 10px; max-width: 500px; margin: auto; }
+.pay-btn { width: 100%; padding: 15px; background: black; color: white; border: none; border-radius: 30px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+             
