@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In | KOBE ELITE</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+</head>
+<body style="display:flex; align-items:center; justify-content:center; height:100vh; background:#050505;">
+    
+    <div class="checkout-card fade-in">
+        <h2 style="font-family:'Orbitron'; color:#00d4ff; text-align:center;">JOIN THE SQUAD</h2>
+        
+        <form id="signupForm" style="margin-top:20px;">
+            <input type="email" id="signup-email" placeholder="Email" class="fancy-input" style="width:100%; padding:10px; margin-bottom:10px; background:#121212; border:1px solid #333; color:white;" required>
+            <input type="password" id="signup-password" placeholder="Password" class="fancy-input" style="width:100%; padding:10px; margin-bottom:10px; background:#121212; border:1px solid #333; color:white;" required>
+            <button type="submit" class="order-btn" style="background:#00d4ff; color:black; width:100%; cursor:pointer;">SIGN UP</button>
+        </form>
+        
+        <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:white;">Already a member? <a href="#" style="color:#faff00">Sign In</a></p>
+    </div>
+
+    <script type="module" src="Firebase-config.js"></script>
+    <script type="module">
+        import { auth } from './Firebase-config.js';
+        import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Welcome! Registration Successful.");
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>
