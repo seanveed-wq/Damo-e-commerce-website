@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel | KOBE ELITE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* small admin-specific styles */
+    body { padding-top: 80px; }
+    .admin-container { max-width:900px; margin:auto; padding:20px; }
+    .admin-section { background: var(--dark-gray); padding:24px; border-radius:14px; margin-bottom:30px; border:1px solid #222; }
+    .admin-section h3 { margin-bottom:18px; }
+    .admin-section input, .admin-section select {
+      width:100%;
+      margin:8px 0;
+      padding:10px;
+      border:1px solid #222;
+      border-radius:8px;
+      background:#000;
+      color:#fff;
+    }
+    .admin-section button { margin-top:12px; }
+    table { width:100%; border-collapse: collapse; margin-top:18px;}
+    table th, table td { border:1px solid #333; padding:8px; text-align:left; font-size:0.9rem; }
+    table th { background:#111; }
+  </style>
+</head>
+<body>
+
+<div class="admin-container">
+  <h2 class="section-title">ADMIN PANEL</h2>
+
+  <div class="admin-section">
+    <h3>Add New Product</h3>
+    <input type="text" id="p-name" placeholder="Product Name">
+    <input type="number" id="p-price" placeholder="Price">
+    <input type="text" id="p-img" placeholder="Image URL">
+    <select id="p-category">
+      <option value="Basketball">Basketball</option>
+      <option value="Running">Running</option>
+      <option value="Casual">Casual</option>
+      <option value="Sports">Sports</option>
+    </select>
+    <button class="login-btn" onclick="addNewProduct()">Add Product</button>
+  </div>
+
+  <div class="admin-section">
+    <h3>Existing Products</h3>
+    <div id="product-list">Loading...</div>
+  </div>
+</div>
+
+<script type="module">
+import { auth, db } from './Firebase-config.js';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const ADMIN_EMAIL = "youradmin@gmail.com";
+
+// Protect admin page
+onAuthStateChanged(auth, user => {
+  if (!user || user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    alert("Access denied");
+    window.location.href = "login.html";
+  } else {
+    loadAdminProducts();
+  }
+});
+
+// Add product
+window.addNewProduct = async () => {
+  const name = document.getElementById('p-name').value;
+  const price = parseFloat(document.getElementById('p-price').value);
+  const img = document.getElementById('p-img').value;
+  const category = document.getElementById('p-category').value;
+  if (!name || !price || !img) return alert("Fill all fields");
+  try {
+    await addDoc(collection(db, "Product"), {
+      name,
+      price,
+      img,
+      category
+    });
+    alert("Product added");
+    loadAdminProducts();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+};
+
+// Load and list existing products
+async function loadAdminProducts() {
+  const snap = await getDocs(collection(db, "Product"));
+  const list = document.getElementById('product-list');
+  list.innerHTML = "";
+  let html = `<table>
+      <tr>
+        <th>Name</th><th>Price</th><th>Category</th><th>Actions</th>
+      </tr>`;
+  snap.forEach(docSnap => {
+    const d = docSnap.data();
+    html += `<tr>
+      <td>${d.name}</td>
+      <td>$${d.price}</td>
+      <td>${d.category}</td>
+      <td>
+        <button onclick="deleteProduct('${docSnap.id}')">Delete</button>
+      </td>
+    </tr>`;
+  });
+  html += `</table>`;
+  list.innerHTML = html;
+}
+
+// Delete product
+window.deleteProduct = async (id) => {
+  if (!confirm("Delete this product?")) return;
+  try {
+    await deleteDoc(doc(db, "Product", id));
+    loadAdminProducts();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+};
+
+// Optional: logout button or auto logout after some time if needed
+</script>
+
+</body>
+</html>
