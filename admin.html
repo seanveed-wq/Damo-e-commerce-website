@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard">
+    <title>Admin Dashboard - ShoeHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="admin-nav-header">
+            <a href="index.html" class="logo">
+                <span>ShoeHub Admin</span>
+            </a>
+        </div>
+        <ul class="admin-nav-menu">
+            <li><a href="#dashboard" class="active" data-tab="dashboard">📊 Dashboard</a></li>
+            <li><a href="#products" data-tab="products">👟 Products</a></li>
+            <li><a href="#orders" data-tab="orders">📦 Orders</a></li>
+            <li><a href="#customers" data-tab="customers">👥 Customers</a></li>
+            <li><a href="#settings" data-tab="settings">⚙️ Settings</a></li>
+        </ul>
+        <div class="admin-nav-footer">
+            <button id="adminLogout" class="btn btn-secondary btn-block">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Admin Content -->
+    <div class="admin-content">
+        <!-- Top Bar -->
+        <div class="admin-topbar">
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="admin-user">
+                <span id="adminName">Admin User</span>
+                <a href="index.html" class="btn btn-sm">View Store</a>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="admin-tab active" id="dashboardTab">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Revenue</h3>
+                    <p class="stat-value" id="totalRevenue">$0</p>
+                    <span class="stat-change">+12% from last month</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Orders</h3>
+                    <p class="stat-value" id="totalOrders">0</p>
+                    <span class="stat-change">+8% from last month</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <p class="stat-value" id="totalProducts">0</p>
+                    <span class="stat-change">Active inventory</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Customers</h3>
+                    <p class="stat-value" id="totalCustomers">0</p>
+                    <span class="stat-change">Registered users</span>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Recent Orders</h2>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentOrdersTable">
+                            <tr><td colspan="5">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Tab -->
+        <div class="admin-tab" id="productsTab">
+            <div class="tab-header">
+                <h2>Product Management</h2>
+                <button class="btn btn-primary" id="addProductBtn">Add New Product</button>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                        <tr><td colspan="6">Loading products...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="admin-tab" id="ordersTab">
+            <div class="tab-header">
+                <h2>Order Management</h2>
+                <select id="orderFilter">
+                    <option value="all">All Orders</option>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTable">
+                        <tr><td colspan="7">Loading orders...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Customers Tab -->
+        <div class="admin-tab" id="customersTab">
+            <div class="tab-header">
+                <h2>Customer Management</h2>
+                <input type="text" id="customerSearch" placeholder="Search customers...">
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                            <th>Orders</th>
+                            <th>Total Spent</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customersTable">
+                        <tr><td colspan="6">Loading customers...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="admin-tab" id="settingsTab">
+            <h2>Settings</h2>
+            <form id="settingsForm" class="admin-form">
+                <div class="form-section">
+                    <h3>Store Settings</h3>
+                    <div class="form-group">
+                        <label for="storeName">Store Name</label>
+                        <input type="text" id="storeName" value="ShoeHub">
+                    </div>
+                    <div class="form-group">
+                        <label for="storeEmail">Store Email</label>
+                        <input type="email" id="storeEmail" value="info@shoehub.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="storePhone">Store Phone</label>
+                        <input type="tel" id="storePhone" value="+1 (555) 123-4567">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Shipping Settings</h3>
+                    <div class="form-group">
+                        <label for="shippingCost">Standard Shipping Cost</label>
+                        <input type="number" id="shippingCost" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="freeShippingThreshold">Free Shipping Threshold</label>
+                        <input type="number" id="freeShippingThreshold" value="100">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Tax Settings</h3>
+                    <div class="form-group">
+                        <label for="taxRate">Tax Rate (%)</label>
+                        <input type="number" id="taxRate" value="8.5" step="0.1">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Add New Product</h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <form id="productForm" class="admin-form">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label for="productName">Product Name *</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description *</label>
+                    <textarea id="productDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productPrice">Price *</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="sneakers">Sneakers</option>
+                            <option value="formal">Formal</option>
+                            <option value="boots">Boots</option>
+                            <option value="sandals">Sandals</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="productSizes">Available Sizes (comma-separated) *</label>
+                    <input type="text" id="productSizes" placeholder="7,8,9,10,11,12" required>
+                </div>
+                <div class="form-group">
+                    <label for="productStock">Stock Quantity *</label>
+                    <input type="number" id="productStock" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Image URL *</label>
+                    <input type="url" id="productImage" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="productFeatured">
+                        <span>Feature this product</span>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelProduct">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Check -->
+    <div class="admin-auth-prompt" id="adminAuthPrompt" style="display: none;">
+        <div class="auth-prompt-content">
+            <h2>Admin Access Required</h2>
+            <p>You must be logged in as an admin to access this page.</p>
+            <a href="login.html" class="btn btn-primary">Login</a>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+                      </html>
