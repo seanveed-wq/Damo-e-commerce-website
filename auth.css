@@ -1,0 +1,122 @@
+.auth-page {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.auth-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.auth-box h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.auth-divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    z-index: 1;
+}
+
+.auth-divider span {
+    background: var(--white);
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.btn-social {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.auth-message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.auth-message.error {
+    background: #fdf2f2;
+    color: var(--error);
+    border: 1px solid #fbd5d5;
+  }
+      
