@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium shoes collection - Find your perfect pair of shoes from our curated collection">
+    <meta name="keywords" content="shoes, sneakers, footwear, online shoe store">
+    <title>ShoeHub - Premium Footwear Collection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="ShoeHub Logo" onerror="this.style.display='none'">
+                    <span>ShoeHub</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn">
+                        <img src="assets/icons/search.svg" alt="Search" onerror="this.innerHTML='🔍'">
+                    </button>
+                    <a href="cart.html" class="icon-btn cart-btn">
+                        <img src="assets/icons/cart.svg" alt="Cart" onerror="this.innerHTML='🛒'">
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <a href="profile.html" class="icon-btn" id="userBtn">
+                        <img src="assets/icons/user.svg" alt="User" onerror="this.innerHTML='👤'">
+                    </a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Step Into Style</h1>
+            <p class="hero-subtitle">Discover our premium collection of footwear designed for comfort and elegance</p>
+            <div class="hero-actions">
+                <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                <a href="#featured" class="btn btn-secondary">View Collection</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero-banner.jpg" alt="Hero Banner" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Handpicked selection of our best sellers</p>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will be loaded dynamically -->
+                <div class="loading">Loading products...</div>
+            </div>
+            <div class="section-footer">
+                <a href="shop.html" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop By Category</h2>
+                <p>Find the perfect style for every occasion</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">👟</div>
+                    <h3>Sneakers</h3>
+                    <p>Casual & Athletic</p>
+                    <a href="shop.html?category=sneakers" class="category-link">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👞</div>
+                    <h3>Formal</h3>
+                    <p>Business & Dress</p>
+                    <a href="shop.html?category=formal" class="category-link">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥾</div>
+                    <h3>Boots</h3>
+                    <p>Rugged & Stylish</p>
+                    <a href="shop.html?category=boots" class="category-link">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👡</div>
+                    <h3>Sandals</h3>
+                    <p>Comfort & Casual</p>
+                    <a href="shop.html?category=sandals" class="category-link">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ShoeHub</h3>
+                    <p>Your trusted destination for premium footwear. Quality, comfort, and style in every step.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#size-guide">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>Email: info@shoehub.com</li>
+                        <li>Phone: +1 (555) 123-4567</li>
+                        <li>Mon-Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShoeHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeSearch">&times;</button>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for shoes...">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/products.js"></script>
+</body>
+  </html>
