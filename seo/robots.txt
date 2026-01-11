@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /checkout.html
+Disallow: /profile.html
+
+Sitemap: https://yourusername.github.io/shoehub/seo/sitemap.xml
